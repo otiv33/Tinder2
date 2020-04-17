@@ -1,4 +1,6 @@
 <?php
+    include_once "session.php";
+
     include_once "db.php";
 
     $email = $_POST['email'];
@@ -13,6 +15,9 @@
             $user = $stmt->fetch();
             if(password_verify($pass, $user['pass'])){
                 //Vse je pravilno
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['full_name'] = $user['first_name'].' '.$user['last_name'];
+
                 header("Location: index.php");
                 die();
             }

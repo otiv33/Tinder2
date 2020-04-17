@@ -1,3 +1,7 @@
+<?php
+   include_once "session.php";
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -44,21 +48,41 @@
 
                   <div class="collapse navbar-collapse main-menu-item" id="navbarSupportedContent">
                      <ul class="navbar-nav">
+                     <?php
+                        // Dinamično prikazovanje menija glede na to, če je prijavljen
+                        if(isset($_SESSION['user_id'])){
+                     ?>
                         <li class="nav-item">
-                           <a class="nav-link" href="index.php">Home</a>
+                           <a class="nav-link" href="index.php">Domov</a>
                         </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="cities.php">Kraji</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="locations.php">Lokacije</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="logout.php">Odjava</a>
+                        </li>
+                     <?php
+                        }
+                        else{
+                     ?>
                         <li class="nav-item">
                            <a class="nav-link" href="login.php">Prijava</a>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" href="registration.php">Registracija</a>
                         </li>
-                        <li class="nav-item dropdown">
+                     <?php
+                        }
+                     ?>
+                        <!--<li class="nav-item dropdown">
                            <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_1" role="button"
                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               Blog
                            </a>
-                           <!--<div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
+                           <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
                               <a class="dropdown-item" href="blog.html"> blog</a>
                               <a class="dropdown-item" href="single-blog.html">Single blog</a>
 
@@ -76,7 +100,7 @@
                            </div>
                         </li>-->
                         <li class="nav-item">
-                           <a class="nav-link" href="contact.html">Contact</a>
+                           <a class="nav-link" href="contact.php">Kontakt</a>
                         </li>
                      </ul>
                   </div>

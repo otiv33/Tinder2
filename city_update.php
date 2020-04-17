@@ -1,4 +1,5 @@
 <?php
+    include_once "session.php";
     include_once "db.php";
 
     $title = $_POST['title'];
